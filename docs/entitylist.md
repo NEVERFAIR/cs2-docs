@@ -21,7 +21,7 @@ end
 pawn:get_weapon_name(): string | nil
 ```
 
-Returns active weapon internal name.
+Returns active weapon name.
 
 ```lua
 local weapon_name = pawn:get_weapon_name()
@@ -83,7 +83,7 @@ Returns local active weapon pointer.
 entitylist.get_local_weapon_name(): string | nil
 ```
 
-Returns local active weapon internal name.
+Returns local active weapon name.
 
 ## get_local_weapon_index
 

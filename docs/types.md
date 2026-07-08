@@ -39,7 +39,7 @@ Methods:
 
 | Method | Description |
 | --- | --- |
-| `get_weapon_name()` | Active weapon internal name |
+| `get_weapon_name()` | Active weapon name |
 | `get_weapon_id()` | Active weapon definition index |
 | `as_ptr()` | Raw `uint8_t*` |
 

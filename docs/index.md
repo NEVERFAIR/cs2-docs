@@ -1,6 +1,6 @@
 # Home
 
-Neverfair uses LuaJIT for runtime scripts. Scripts can call the cheat API, render through the background draw list, read schema offsets, use FFI, listen to callbacks, and work with game events.
+Neverfair uses LuaJIT for runtime scripts. Scripts can call the Lua API, draw UI elements, read offsets, use FFI, listen to callbacks, and work with game events.
 
 ## Loading Lua scripts
 
@@ -26,7 +26,7 @@ end)
 
 | Module | Description |
 | --- | --- |
-| `engine` | Connection state, commands, schema offset lookup |
+| `engine` | Connection state, commands, offset lookup |
 | `entitylist` | Local player, entities, controller and pawn helpers |
 | `render` / `imgui` | Background draw list primitives |
 | `cvars` | Console variables |

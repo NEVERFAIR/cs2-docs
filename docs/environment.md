@@ -8,7 +8,7 @@ This page describes Neverfair-specific globals. Standard Lua libraries are avail
 print(...)
 ```
 
-Sends text into `sdk::console::log`.
+Writes text to the Neverfair console.
 
 ```lua
 print("Current sensitivity:", cvars.sensitivity:get_float())
@@ -20,7 +20,7 @@ print("Current sensitivity:", cvars.sensitivity:get_float())
 color_t(r: number, g: number, b: number, a: number): color
 ```
 
-Creates a color table for render and console functions. Values can be passed as `0..1` floats or `0..255` numbers.
+Creates a color table for API functions. Values can be passed as `0..1` floats or `0..255` numbers.
 
 ```lua
 local accent = color_t(0.2, 0.75, 1.0, 1.0)
@@ -33,7 +33,7 @@ render.text(24, 24, "neverfair", accent, 16)
 color_print(text: string, color: color)
 ```
 
-Prints colored text into the cheat console.
+Prints colored text into the Neverfair console.
 
 ```lua
 color_print("[neverfair] ", color_t(0.2, 0.75, 1.0, 1.0))
@@ -50,9 +50,9 @@ Registers runtime callbacks. Supported built-in callback names:
 
 | Name | Arguments | Description |
 | --- | --- | --- |
-| `draw` | none | Called from present hook |
+| `draw` | none | Called every frame |
 | `paint` | none | Alias for `draw` |
-| `frame_stage` | `stage` | Called from frame stage notify |
+| `frame_stage` | `stage` | Called on frame stage updates |
 | `frame_stage_notify` | `stage` | Alias for `frame_stage` |
 | `unload` | none | Called before script unload |
 | event name | `event` | Called for game event |

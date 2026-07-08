@@ -1,6 +1,6 @@
 # render
 
-`imgui` is an alias for `render`. Drawing is done through the background draw list.
+`imgui` is an alias for `render`.
 
 ## get_screen_size
 
