@@ -1,4 +1,4 @@
-# Weapon name
+# Clantag based on weapon name
 
 This script changes player name to include active weapon name.
 

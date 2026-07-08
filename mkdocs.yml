@@ -37,7 +37,7 @@ nav:
   - netvars: netvars.md
   - types: types.md
   - examples:
-    - Weapon name: examples/weapon-name.md
+    - Clantag based on weapon name: examples/weapon-name.md
     - HUD + hitlog: examples/hud-hitlog.md
 
 markdown_extensions:
