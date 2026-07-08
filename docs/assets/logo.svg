@@ -1,0 +1,9 @@
+<svg width="96" height="52" viewBox="0 0 96 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<clipPath id="avatar_clip">
+			<rect x="2" y="2" width="92" height="48" rx="10"/>
+		</clipPath>
+	</defs>
+	<rect x="1" y="1" width="94" height="50" rx="11" fill="#17171b" stroke="#8B5CF6" stroke-width="2"/>
+	<image href="https://avatars.githubusercontent.com/u/235097401?s=200&amp;v=4" x="2" y="2" width="92" height="48" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatar_clip)"/>
+</svg>
