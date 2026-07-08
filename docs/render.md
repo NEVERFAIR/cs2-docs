@@ -2,6 +2,34 @@
 
 `imgui` is an alias for `render`. All primitives draw into the background draw list.
 
+Render sizes are DPI-aware. Coordinates stay in screen pixels, while text size, line thickness, rectangle size, rounding, circle radius, and image size are scaled automatically.
+
+## get_dpi_scale
+
+```lua
+render.get_dpi_scale(): number
+```
+
+Returns current UI DPI scale.
+
+## setup_font
+
+```lua
+render.setup_font(path: string, size: number): string | nil
+```
+
+Loads a custom font from disk and returns a font id that can be passed into `render.text` and `render.calc_text_size`.
+
+```lua
+local inter = render.setup_font("C:\\Windows\\Fonts\\arial.ttf", 16)
+
+register_callback("draw", function()
+    if inter then
+        render.text(24, 24, "custom font", color_t(1, 1, 1, 1), 16, inter)
+    end
+end)
+```
+
 ## fonts
 
 ```lua
