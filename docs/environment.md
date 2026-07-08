@@ -55,6 +55,8 @@ Registers runtime callbacks. Supported built-in callback names:
 | --- | --- | --- |
 | `draw` | none | Called every frame |
 | `paint` | none | Alias for `draw` |
+| `create_move` | `cmd` | Called with the current `user_cmd` |
+| `override_view` | `view` | Called with the current camera view setup |
 | `frame_stage` | `stage` | Called on frame stage updates |
 | `frame_stage_notify` | `stage` | Alias for `frame_stage` |
 | `unload` | none | Called before script unload |
@@ -63,5 +65,13 @@ Registers runtime callbacks. Supported built-in callback names:
 ```lua
 register_callback("draw", function()
     render.text(24, 24, "runtime", color_t(1, 1, 1, 1), 16)
+end)
+```
+
+```lua
+register_callback("create_move", function(cmd)
+    if cmd:get_button(input_bit_mask_t.in_use) then
+        print("use pressed on command", cmd.command_number)
+    end
 end)
 ```

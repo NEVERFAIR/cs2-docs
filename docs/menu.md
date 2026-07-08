@@ -85,3 +85,41 @@ register_callback("draw", function()
     end
 end)
 ```
+
+## notify
+
+```lua
+menu.notify(text: string, color: color | nil)
+```
+
+Sends a Neverfair devlog notification.
+
+```lua
+menu.notify("script loaded", color_t(0.2, 0.75, 1.0, 1.0))
+```
+
+## get_username
+
+```lua
+menu.get_username(): string
+```
+
+Returns the current Neverfair username.
+
+## get_cheat_name
+
+```lua
+menu.get_cheat_name(): string
+```
+
+Returns the current cheat name.
+
+## example
+
+```lua
+register_callback("draw", function()
+    local rect = menu.get_rect()
+    local text = menu.get_cheat_name() .. " / " .. menu.get_username()
+    render.text(rect.x + 16, rect.y + 16, text, color_t(1, 1, 1, 1), 14)
+end)
+```

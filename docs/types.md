@@ -50,3 +50,31 @@ Pawn supports FFI pointer arithmetic:
 ```lua
 local value = ffi.cast("int*", pawn + offset)[0]
 ```
+
+## input_bit_mask_t
+
+Button bit masks used by `user_cmd`.
+
+| Name | Description |
+| --- | --- |
+| `in_attack` | Primary attack |
+| `in_attack2` | Secondary attack |
+| `in_jump` | Jump |
+| `in_duck` | Duck |
+| `in_forward` | Move forward |
+| `in_back` | Move backward |
+| `in_moveleft` | Move left |
+| `in_moveright` | Move right |
+| `in_use` | Use |
+| `in_reload` | Reload |
+| `in_speed` | Walk |
+| `in_score` | Scoreboard |
+| `in_zoom` | Zoom |
+
+```lua
+register_callback("create_move", function(cmd)
+    if cmd:get_button(input_bit_mask_t.in_jump) then
+        menu.notify("jump")
+    end
+end)
+```

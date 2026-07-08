@@ -33,6 +33,9 @@ nav:
   - entitylist: entitylist.md
   - render: render.md
   - menu: menu.md
+  - trace: trace.md
+  - http: http.md
+  - user_cmd: user_cmd.md
   - globals: globals.md
   - events: events.md
   - cvars: cvars.md
