@@ -16,8 +16,7 @@ Supported names:
 | `frame_count` | number |
 | `absolute_frame_time` | number |
 | `frame_time` | number |
-| `current_time` | number |
-| `curtime` | number |
+| `current_time` also `curtime` | number |
 | `player_time` | number |
 | `tick_count` | number |
 | `tick_fraction` | number |
