@@ -41,6 +41,29 @@ local weapon_id = pawn:get_weapon_id()
 print("weapon id:", weapon_id)
 ```
 
+## pawn:get_bone_position
+
+```lua
+pawn:get_bone_position(index: number): table | nil
+```
+
+Returns bone world position as `{ x = number, y = number, z = number }`.
+
+```lua
+local head = pawn:get_bone_position(6)
+if head then
+    local screen = render.world_to_screen(head.x, head.y, head.z)
+end
+```
+
+## pawn:get_hitbox_position
+
+```lua
+pawn:get_hitbox_position(index: number): table | nil
+```
+
+Returns hitbox world position as `{ x = number, y = number, z = number }`.
+
 ## pawn:as_ptr
 
 ```lua

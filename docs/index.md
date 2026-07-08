@@ -28,7 +28,10 @@ end)
 | --- | --- |
 | `engine` | Connection state, commands, offset lookup |
 | `entitylist` | Local player, entities, controller and pawn helpers |
-| `render` / `imgui` | Background draw list primitives |
+| `render` / `imgui` | Background draw list primitives, text, gradients, images |
+| `menu` | Menu state, position, size |
+| `binds` | Active bind list and bind values |
+| `globals` / `global_vars` | Runtime timing and map data |
 | `cvars` | Console variables |
 | `events` | Game event callbacks through `register_callback` |
 | `ffi` | LuaJIT FFI |

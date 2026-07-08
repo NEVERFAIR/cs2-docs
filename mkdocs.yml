@@ -32,6 +32,8 @@ nav:
   - engine: engine.md
   - entitylist: entitylist.md
   - render: render.md
+  - menu: menu.md
+  - globals: globals.md
   - events: events.md
   - cvars: cvars.md
   - netvars: netvars.md

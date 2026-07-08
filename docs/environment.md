@@ -8,7 +8,7 @@ This page describes Neverfair-specific globals. Standard Lua libraries are avail
 print(...)
 ```
 
-Writes text to the Neverfair console.
+Sends text to Neverfair notifications.
 
 ```lua
 print("Current sensitivity:", cvars.sensitivity:get_float())
@@ -33,11 +33,14 @@ render.text(24, 24, "neverfair", accent, 16)
 color_print(text: string, color: color)
 ```
 
-Prints colored text into the Neverfair console.
+Sends colored text to Neverfair notifications. End the text with `\0` to continue the same line without a newline.
 
 ```lua
-color_print("[neverfair] ", color_t(0.2, 0.75, 1.0, 1.0))
-color_print("loaded", color_t(1, 1, 1, 1))
+local accent = color_t(0.2, 0.75, 1.0, 1.0)
+local white = color_t(1, 1, 1, 1)
+
+color_print("[neverfair] \0", accent)
+color_print("loaded", white)
 ```
 
 ## register_callback

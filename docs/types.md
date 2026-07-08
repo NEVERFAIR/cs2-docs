@@ -41,6 +41,8 @@ Methods:
 | --- | --- |
 | `get_weapon_name()` | Active weapon name |
 | `get_weapon_id()` | Active weapon definition index |
+| `get_bone_position(index)` | Bone world position |
+| `get_hitbox_position(index)` | Hitbox world position |
 | `as_ptr()` | Raw `uint8_t*` |
 
 Pawn supports FFI pointer arithmetic:
