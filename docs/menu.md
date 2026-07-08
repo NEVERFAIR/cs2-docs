@@ -22,7 +22,31 @@ Returns menu position as `{ x = number, y = number }`.
 menu.get_size(): table
 ```
 
-Returns menu size as `{ x = number, y = number }`.
+Returns DPI-normalized menu size as `{ x = width, y = height }`. Use this value as `w/h` for render functions.
+
+## get_rect
+
+```lua
+menu.get_rect(): table
+```
+
+Returns menu bounds:
+
+| Field | Description |
+| --- | --- |
+| `x` | Left edge in screen pixels |
+| `y` | Top edge in screen pixels |
+| `z` | Right edge in screen pixels |
+| `w` | Bottom edge in screen pixels |
+| `width` | DPI-normalized width for render functions |
+| `height` | DPI-normalized height for render functions |
+| `pixel_width` | Raw pixel width |
+| `pixel_height` | Raw pixel height |
+
+```lua
+local rect = menu.get_rect()
+render.rect_filled(rect.x, rect.y, rect.width, rect.height, color_t(0, 0, 0, 0.5))
+```
 
 ## get_binds
 
