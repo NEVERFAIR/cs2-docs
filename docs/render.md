@@ -155,6 +155,34 @@ render.circle_filled_gradient(x: number, y: number, radius: number, inner: color
 render.circle_gradient(x: number, y: number, radius: number, inner: color, outer: color, segments: number)
 ```
 
+## circle_3d
+
+```lua
+render.circle_3d(pos: vec3, radius: number, color: color, thickness: number, normal: vec3, segments: number)
+```
+
+Draws a world-space circle in the plane defined by `normal`.
+
+```lua
+render.circle_3d({ x = 0, y = 0, z = 64 }, 18, color_t(1, 1, 1, 1), 2, { x = 0, y = 0, z = 1 })
+```
+
+## circle_filled_3d
+
+```lua
+render.circle_filled_3d(pos: vec3, radius: number, color: color, normal: vec3, segments: number)
+render.filled_circle_3d(pos: vec3, radius: number, color: color, normal: vec3, segments: number)
+```
+
+## circle_fade_3d
+
+```lua
+render.circle_fade_3d(pos: vec3, radius: number, outer: color, inner: color, normal: vec3, segments: number)
+render.circle_3d_fade(pos: vec3, radius: number, outer: color, inner: color, normal: vec3, segments: number)
+```
+
+Draws a world-space radial gradient circle.
+
 ## world_to_screen
 
 ```lua
