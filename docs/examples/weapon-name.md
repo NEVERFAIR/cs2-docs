@@ -8,73 +8,87 @@ local last_update_time = 0
 local update_delay = 0.35
 
 local function normalize_weapon_name(name)
-    if name == nil or name == "" then
-        return nil
-    end
+	if name == nil or name == "" then
+		return nil
+	end
 
-    name = tostring(name)
-    name = name:gsub("^weapon_", "")
-    name = name:gsub("^item_", "")
-    name = name:gsub("_", " ")
+	name = tostring(name)
+	name = name:gsub("^weapon_", "")
+	name = name:gsub("^item_", "")
+	name = name:gsub("_", " ")
 
-    if name == "" then
-        return nil
-    end
+	if name == "" then
+		return nil
+	end
 
-    return name
+	return name
 end
 
 local function quote_cmd(value)
-    value = tostring(value or "")
-    value = value:gsub("\\", "\\\\")
-    value = value:gsub("\"", "'")
-    return "\"" .. value .. "\""
+	value = tostring(value or "")
+	value = value:gsub("\\", "\\\\")
+	value = value:gsub("\"", "'")
+	return "\"" .. value .. "\""
+end
+
+local function can_update()
+	if not engine.is_connected() or not engine.is_in_game() then
+		return false
+	end
+
+	local now = os.clock()
+	if now - last_update_time < update_delay then
+		return false
+	end
+
+	last_update_time = now
+	return true
 end
 
 local function set_name(value)
-    if value == nil or value == "" or value == last_set_name then
-        return
-    end
+	if value == nil or value == "" or value == last_set_name then
+		return
+	end
 
-    last_set_name = value
-    engine.client_cmd("setinfo name " .. quote_cmd(value))
+	last_set_name = value
+	engine.client_cmd("setinfo name " .. quote_cmd(value))
 end
 
+local parsed = false
+local player_name = "bebebe"
+
 register_callback("draw", function()
-    if not engine.is_connected() or not engine.is_in_game() then
-        return
-    end
+	if not can_update() then
+		return
+	end
 
-    local now = os.clock()
-    if now - last_update_time < update_delay then
-        return
-    end
+	local real_name = entitylist.get_local_player_name()
+	if not parsed then
+		player_name = real_name
+		parsed = true
+	end
 
-    last_update_time = now
+	local pawn = entitylist.get_local_player_pawn()
+	if pawn == nil then
+		return
+	end
 
-    local pawn = entitylist.get_local_player_pawn()
-    local player_name = entitylist.get_local_player_name()
+	local weapon_name = normalize_weapon_name(pawn:get_weapon_name())
 
-    if pawn == nil or player_name == nil or player_name == "" then
-        return
-    end
+	if player_name == nil or player_name == "" or weapon_name == nil then
+		return
+	end
 
-    local weapon_name = normalize_weapon_name(pawn:get_weapon_name())
-    if weapon_name == nil then
-        return
-    end
-
-    set_name("[" .. weapon_name .. "] " .. player_name)
+	set_name("[" .. weapon_name .. "] " .. player_name)
 end)
 
 register_callback("unload", function()
-    if not engine.is_connected() or not engine.is_in_game() then
-        return
-    end
+	if not engine.is_connected() or not engine.is_in_game() then
+		return
+	end
 
-    local player_name = entitylist.get_local_player_name()
-    if player_name ~= nil and player_name ~= "" then
-        engine.client_cmd("setinfo name " .. quote_cmd(player_name))
-    end
+	if player_name ~= nil and player_name ~= "" then
+		engine.client_cmd("setinfo name " .. quote_cmd(player_name))
+	end
 end)
 ```
