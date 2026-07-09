@@ -59,6 +59,9 @@ Registers runtime callbacks. Supported built-in callback names:
 | `override_view` | `view` | Called with the current camera view setup |
 | `frame_stage` | `stage` | Called on frame stage updates |
 | `frame_stage_notify` | `stage` | Alias for `frame_stage` |
+| `miss` | `miss` | Called when the cheat resolves a shot miss reason |
+| `aim_miss` | `miss` | Alias for `miss` |
+| `shot_miss` | `miss` | Alias for `miss` |
 | `unload` | none | Called before script unload |
 | event name | `event` | Called for game event |
 
@@ -75,3 +78,15 @@ register_callback("create_move", function(cmd)
     end
 end)
 ```
+
+```lua
+register_callback("miss", function(miss)
+    print("missed due to", miss.reason, "hc", miss.hitchance)
+
+    if miss.impact_position then
+        render.circle_3d(miss.impact_position, 4, color_t(1, 0.2, 0.2, 1), 1)
+    end
+end)
+```
+
+The `miss` table contains `reason`, `hitchance`, `backtrack_ticks`, `force_shoot`, `aimpunch`, `tick`, `impact_tick`, `command_number`, `target_index`, `target_handle`, `hitbox`, `target_velocity`, `record_simulation_time`, `record_tick_valid`, `rage_shot`, `processed`, `aim_point`, `aim_angles`, `aim_punch`, `shoot_position`, and `impact_position`.
