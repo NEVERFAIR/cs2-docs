@@ -60,9 +60,9 @@ Loads an encoded image from memory.
 render.setup_font(path: string, size: number, weight: number = 400): string | nil
 ```
 
-Loads a custom font from disk and returns a font id that can be passed into `render.text` and `render.calc_txt_size`.
+Loads a custom font from disk and returns a font id that can be passed into `render.text` and `render.calc_text_size`.
 
-## calc_txt_size
+## calc_text_size
 
 ```lua
 render.calc_txt_size(text: string, size: number, font: string): vec2_t
