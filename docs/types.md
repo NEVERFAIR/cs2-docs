@@ -1,6 +1,6 @@
 # types
 
-## color
+## color_t
 
 Color is a Lua table created by `color_t`.
 
@@ -18,7 +18,7 @@ Fields:
 | `b` | number |
 | `a` | number |
 
-## vec2
+## vec2_t
 
 Screen positions returned by `render.get_screen_size` and `render.world_to_screen`.
 
@@ -27,7 +27,86 @@ Screen positions returned by `render.get_screen_size` and `render.world_to_scree
 | `x` | number |
 | `y` | number |
 
-## pawn
+## vec3_t
+
+World position, direction vector, or angle-like three-component table.
+
+| Field | Type |
+| --- | --- |
+| `x` | number |
+| `y` | number |
+| `z` | number |
+
+## angle_t
+
+Angle table. Uses the same shape as [`vec3_t`](#vec3_t).
+
+| Field | Type |
+| --- | --- |
+| `x` | number |
+| `y` | number |
+| `z` | number |
+
+## ray_t
+
+Ray object created by `ray_t()`.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `start` | [`vec3_t`](#vec3_t) | Start point |
+| `end` | [`vec3_t`](#vec3_t) | End point |
+| `mins` | [`vec3_t`](#vec3_t) | Shape minimum bounds |
+| `maxs` | [`vec3_t`](#vec3_t) | Shape maximum bounds |
+| `type` | number | Ray type |
+
+## trace_filter_t
+
+Trace filter object created by `trace_filter_t(mask, layer, skip)`.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `mask` | number | Trace mask |
+| `layer` | number | Collision layer |
+
+## trace_t
+
+Trace result returned by `trace.shape`, `trace.line`, and `engine.trace_shape`.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `hit` | boolean | Trace hit something |
+| `fraction` | number | Trace fraction |
+| `pos` | [`vec3_t`](#vec3_t) | Hit position |
+| `end_pos` | [`vec3_t`](#vec3_t) | End position |
+| `normal` | [`vec3_t`](#vec3_t) | Hit normal |
+| `entity` | userdata | Hit entity pointer |
+| `contents` | number | Contents mask |
+| `hitbox` | number | Hitbox id |
+| `hitgroup` | number | Hitgroup id |
+| `all_solid` | boolean | Trace started or ended inside solid |
+| `hit_world` | boolean | Hit world geometry |
+
+## bullet_trace_t
+
+Bullet trace result returned by `trace.fire_bullet` and `engine.trace_bullet`.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `valid` | boolean | Bullet data is valid |
+| `damage` | number | Scaled damage |
+| `hitgroup` | number | Hitgroup id |
+| `hitbox` | number | Hitbox id |
+| `penetrated` | boolean | Bullet penetrated material |
+
+## image_t
+
+Texture object returned by `render.setup_texture`, `render.setup_texture_rgba`, and `render.setup_texture_from_memory`.
+
+| Method | Returns | Description |
+| --- | --- | --- |
+| `get_size()` | [`vec2_t`](#vec2_t) | Texture size |
+
+## pawn_t
 
 Pawn wrapper returned by `entitylist.get_local_player_pawn`.
 

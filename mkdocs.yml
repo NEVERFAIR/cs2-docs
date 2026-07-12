@@ -32,6 +32,7 @@ nav:
   - engine: engine.md
   - entitylist: entitylist.md
   - render: render.md
+  - math: math.md
   - menu: menu.md
   - trace: trace.md
   - http: http.md

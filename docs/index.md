@@ -29,6 +29,7 @@ end)
 | `engine` | Connection state, commands, offset lookup |
 | `entitylist` | Local player, entities, controller and pawn helpers |
 | `render` / `imgui` | Background draw list primitives, text, gradients, images |
+| `math` | Angle and vector helpers |
 | `menu` | Menu state, position, size |
 | `binds` | Active bind list and bind values |
 | `trace` | Engine traces and bullet penetration traces |
