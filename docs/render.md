@@ -65,7 +65,7 @@ Loads a custom font from disk and returns a font id that can be passed into `ren
 ## calc_text_size
 
 ```lua
-render.calc_txt_size(text: string, size: number, font: string): vec2_t
+render.calc_text_size(text: string, size: number, font: string): vec2_t
 ```
 
 Returns text size. `render.calc_text_size()` and `render.text_size()` are kept for compatibility.
