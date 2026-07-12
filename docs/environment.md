@@ -82,10 +82,6 @@ end)
 ```lua
 register_callback("miss", function(miss)
     print("missed due to", miss.reason, "hc", miss.hitchance)
-
-    if miss.impact_position then
-        render.circle_3d(miss.impact_position, 4, color_t(1, 0.2, 0.2, 1), 1)
-    end
 end)
 ```
 
