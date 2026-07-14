@@ -54,6 +54,29 @@ render.setup_texture_from_memory(bytes: string): image_t | nil
 
 Loads an encoded image from memory.
 
+## create_panorama_svg_texture
+
+```lua
+render.create_panorama_svg_texture(path: string, height: number): image_t | nil
+```
+
+Loads an SVG from Panorama resources and creates a drawable texture. `height` sets the texture height in pixels; the width is calculated automatically from the SVG aspect ratio.
+
+The path can be specified with or without the compiled resource extension, for example `"panorama/images/icons/flags/ae.vsvg_c"` or `"icons/flags/ae"`. Returns `nil` when the resource cannot be found or rendered.
+
+```lua
+local ae_flag = render.create_panorama_svg_texture("panorama/images/icons/flags/ae.vsvg_c", 26)
+
+register_callback("draw", function()
+    if ae_flag == nil then
+        return
+    end
+
+    local size = ae_flag:get_size()
+    render.texture(ae_flag, 100, 100, size.x, size.y, color_t(1, 1, 1, 1))
+end)
+```
+
 ## setup_font
 
 ```lua
@@ -62,13 +85,16 @@ render.setup_font(path: string, size: number, weight: number = 400): string | ni
 
 Loads a custom font from disk and returns a font id that can be passed into `render.text` and `render.calc_txt_size`.
 
+The configured size is used automatically when the font id is passed without an explicit render size.
+
 ## calc_txt_size
 
 ```lua
 render.calc_txt_size(text: string, size: number, font: string): vec2_t
+render.calc_txt_size(text: string, font: string): vec2_t
 ```
 
-Returns text size. `render.calc_text_size()` and `render.text_size()` are kept for compatibility.
+Returns text size. The font's configured size is used by the second overload. `render.calc_text_size()` and `render.text_size()` are kept for compatibility.
 
 ## world_to_screen
 
@@ -91,10 +117,21 @@ Draws a texture. `render.image()` is kept for compatibility.
 
 ```lua
 render.text(x: number, y: number, text: string, color: color_t, size: number, font: string, flags: number)
+render.text(x: number, y: number, text: string, color: color_t, font: string, flags: number)
 ```
 
 ```lua
 render.text(24, 24, "neverfair", color_t(1, 1, 1, 1), 16, render.fonts.verdana, render.flags.outline)
+```
+
+When a custom font id is passed as the fifth argument, text is rendered at the size configured by `render.setup_font` without rescaling.
+
+```lua
+local font = render.setup_font("C:/Windows/Fonts/verdana.ttf", 16, 400)
+
+if font then
+    render.text(24, 24, "neverfair", color_t(1, 1, 1, 1), font, render.flags.outline)
+end
 ```
 
 ## line

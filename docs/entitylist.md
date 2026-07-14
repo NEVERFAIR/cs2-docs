@@ -50,7 +50,7 @@ pawn:get_bone_position(index: number): table | nil
 Returns bone world position as `{ x = number, y = number, z = number }`.
 
 ```lua
-local head = pawn:get_bone_position(6)
+local head = pawn:get_bone_position(7)
 if head then
     local screen = render.world_to_screen(head.x, head.y, head.z)
 end
@@ -63,6 +63,39 @@ pawn:get_hitbox_position(index: number): table | nil
 ```
 
 Returns hitbox world position as `{ x = number, y = number, z = number }`.
+
+## pawn:get_eye_pos
+
+```lua
+pawn:get_eye_pos(): vec3_t | nil
+```
+
+Returns the pawn eye position.
+
+```lua
+local pawn = entitylist.get_local_player_pawn()
+if pawn then
+    local eye_pos = pawn:get_eye_pos()
+    if eye_pos then
+        print(eye_pos.x, eye_pos.y, eye_pos.z)
+    end
+end
+```
+
+## pawn:is_scoped
+
+```lua
+pawn:is_scoped(): boolean
+```
+
+Returns whether the pawn is scoped.
+
+```lua
+local pawn = entitylist.get_local_player_pawn()
+if pawn and pawn:is_scoped() then
+    print("scoped")
+end
+```
 
 ## pawn:as_ptr
 

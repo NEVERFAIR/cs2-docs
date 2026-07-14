@@ -100,7 +100,7 @@ Bullet trace result returned by `trace.fire_bullet` and `engine.trace_bullet`.
 
 ## image_t
 
-Texture object returned by `render.setup_texture`, `render.setup_texture_rgba`, and `render.setup_texture_from_memory`.
+Texture object returned by `render.setup_texture`, `render.setup_texture_rgba`, `render.setup_texture_from_memory`, and `render.create_panorama_svg_texture`.
 
 | Method | Returns | Description |
 | --- | --- | --- |
@@ -122,6 +122,8 @@ Methods:
 | `get_weapon_id()` | Active weapon definition index |
 | `get_bone_position(index)` | Bone world position |
 | `get_hitbox_position(index)` | Hitbox world position |
+| `get_eye_pos()` | Eye position, using prediction data for the local pawn |
+| `is_scoped()` | Scoped state, using prediction data for the local pawn |
 | `as_ptr()` | Raw `uint8_t*` |
 
 Pawn supports FFI pointer arithmetic:
