@@ -83,15 +83,14 @@ end)
 render.setup_font(path: string, size: number, weight: number = 400): string | nil
 ```
 
-Loads a custom font from disk and returns a font id that can be passed into `render.text` and `render.calc_txt_size`.
+Loads a custom font from disk and returns a font id that can be passed into `render.text` and `render.calc_text_size`.
 
-The configured size is used automatically when the font id is passed without an explicit render size.
-
-## calc_txt_size
+## calc_text_size
 
 ```lua
-render.calc_txt_size(text: string, size: number, font: string): vec2_t
-render.calc_txt_size(text: string, font: string): vec2_t
+render.calc_text_size(text: string, size: number, font: string): vec2_t
+render.calc_text_size(text: string, font: string): vec2_t
+```
 ```
 
 Returns text size. The font's configured size is used by the second overload. `render.calc_text_size()` and `render.text_size()` are kept for compatibility.
