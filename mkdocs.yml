@@ -36,6 +36,8 @@ nav:
   - menu: menu.md
   - trace: trace.md
   - http: http.md
+  - json: json.md
+  - clipboard: clipboard.md
   - user_cmd: user_cmd.md
   - globals: globals.md
   - events: events.md

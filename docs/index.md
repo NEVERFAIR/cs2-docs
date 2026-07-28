@@ -34,6 +34,8 @@ end)
 | `binds` | Active bind list and bind values |
 | `trace` | Engine traces and bullet penetration traces |
 | `http` | Asynchronous HTTP GET and POST |
+| `json` | JSON encoding, decoding, typed containers, and null values |
+| `clipboard` | Reading and writing Unicode clipboard text |
 | `globals` / `global_vars` | Runtime timing and map data |
 | `cvars` | Console variables |
 | `events` | Game event callbacks through `register_callback` |
