@@ -195,18 +195,29 @@ container:add_float_slider(label: string, default_value: number, minimum: number
 ## add_label
 
 ```lua
-container:add_label(label: string)
+container:add_label(label: string): menu_label
 ```
 
 ## add_separator
 
 ```lua
-container:add_separator(thickness: number, padding: number)
+container:add_separator(thickness: number, padding: number): menu_separator
 ```
 
 `container` can be a groupbox, a popup checkbox, or a popup combo. Elements are rendered in creation order.
 
 ## Element methods
+
+Every menu element returned by an `add_*` function supports:
+
+```lua
+element:set_visible(visible: boolean)
+element:get_visible(): boolean
+```
+
+`set_visible(false)` hides the element without rendering it or reserving layout space. Its value, color, selection, and binds remain unchanged. Calling `set_visible(true)` shows it again in its original creation order. Visibility is runtime state and is not stored in Neverfair configs.
+
+These methods are available on checkboxes, combos, multi-selection boxes, colors, integer and float sliders, labels, and separators.
 
 ```lua
 checkbox:get_value(): boolean
@@ -252,6 +263,11 @@ local amount = general:add_int_slider("Amount", 25, 0, 100, 1, true)
 local scale = general:add_float_slider("Scale", 1.0, 0.1, 2.0, 0.05, false)
 local colored_toggle = general:add_color_checkbox("Colored toggle", false, true, 0.2, 0.8, 1.0, 1.0)
 local colored_mode = general:add_color_combo("Colored mode", 0, false, { "One", "Two" }, 1.0, 0.4, 0.2, 1.0)
+local advanced_label = general:add_label("Advanced options")
+local advanced_separator = general:add_separator(1, 4)
+
+advanced_label:set_visible(false)
+advanced_separator:set_visible(false)
 
 local popup_checkbox = advanced:add_checkbox("Advanced settings", true, true, 230, 0)
 popup_checkbox:add_int_slider("Limit", 10, 1, 64, 1, false)
@@ -263,6 +279,11 @@ popup_combo:add_separator(1, 0)
 popup_combo:add_label("Profile settings")
 
 register_callback("draw", function()
+    local show_advanced = enabled:get_value()
+    colored_mode:set_visible(show_advanced)
+    advanced_label:set_visible(show_advanced)
+    advanced_separator:set_visible(show_advanced)
+
     if enabled:get_value() then
         render.text(24, 120, "Lua checkbox is enabled", color_t(1, 1, 1, 1), 13)
     end
